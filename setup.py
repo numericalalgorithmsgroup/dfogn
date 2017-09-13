@@ -23,11 +23,6 @@ alternative licensing.
 """
 
 from setuptools import setup
-# http://python-packaging.readthedocs.io/en/latest/index.html
-# Have already run: sudo pip3 install -e .   <-- installs DFOGN as package on this system (linked to this source folder)
-# Test: python3 setup.py test
-
-# List of classifiers: https://pypi.python.org/pypi?%3Aaction=list_classifiers
 
 # Get package version
 from dfogn import __version__
@@ -40,6 +35,7 @@ setup(
     author='Lindon Roberts',
     author_email='lindon.roberts@maths.ox.ac.uk',
     url="https://github.com/numericalalgorithmsgroup/dfogn/",
+    download_url="https://github.com/numericalalgorithmsgroup/dfogn/archive/0.1.tar.gz",
     packages=['dfogn'],
     license='GNU GPL',
     keywords = "mathematics derivative free optimization nonlinear least squares",
