@@ -8,7 +8,7 @@ A Derivative-Free Gauss-Newton  Method, C. Cartis and L. Roberts, submitted (201
 
 Documentation
 -------------
-See manual.pdf.
+See manual.pdf or `here <http://people.maths.ox.ac.uk/robertsl/dfogn/>`_.
 
 Requirements
 ------------
@@ -77,7 +77,7 @@ If you installed DFO-GN manually, you can test your installation by running:
 
     $ python setup.py test
 
-Alternatively, the documentation provides some simple examples of how to run DFO-GN, which are also available in the examples directory.
+Alternatively, the `documentation <http://people.maths.ox.ac.uk/robertsl/dfogn/>`_ provides some simple examples of how to run DFO-GN, which are also available in the examples directory.
 
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/DFOGN.svg
                   :target: https://pypi.python.org/pypi/DFOGN
