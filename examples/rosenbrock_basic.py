@@ -10,10 +10,6 @@ def rosenbrock(x):
 # Define the starting point
 x0 = np.array([-1.2, 1.0])
 
-# Define optional bound constraints (a <= x <= b)
-a = np.array([-10.0, -10.0])
-b = np.array([0.9, 0.85])
-
 # For optional extra output details
 # import logging
 # logging.basicConfig(level=logging.INFO, format='%(message)s')
