@@ -3,6 +3,8 @@
 *.egg-info
 */*.eggs
 *.pyc
+docs/_build
+dist
 
 ## LaTeX standard ignores
 *.pdf  # exclude all pdfs unless specifically included

@@ -40,6 +40,7 @@ If you have any questions or suggestsions about the code, or have used DFO-GN fo
    info
    install
    userguide
+   history
 
 Acknowledgements
 ----------------
