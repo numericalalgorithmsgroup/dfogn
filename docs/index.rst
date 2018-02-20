@@ -27,9 +27,11 @@ Mathematically, DFO-GN solves
    \min_{x\in\mathbb{R}^n}  &\quad  f(x) := \sum_{i=1}^{m}r_{i}(x)^2 \\
    \text{s.t.} &\quad  a \leq x \leq b
 
-where the functions :math:`r_i(x)` may be nonlinear and even nonconvex. Full details of the DFO-GN algorithm are given in our paper: C. Cartis and L. Roberts, A Derivative-Free Gauss-Newton Method, *in preparation*, (2017).
+where the functions :math:`r_i(x)` may be nonlinear and even nonconvex. Full details of the DFO-GN algorithm are given in our paper: `A Derivative-Free Gauss-Newton Method <https://arxiv.org/abs/1710.11005>`_, C. Cartis and L. Roberts, submitted (2017).
 
 DFO-GN is released under the open source GNU General Public License, a copy of which can be found in LICENSE.txt. Please `contact NAG <http://www.nag.com/content/worldwide-contact-information>`_ for alternative licensing. It is compatible with both Python 2 and Python 3.
+
+Note: we have released a newer package, called DFO-LS, which is an upgrade of DFO-GN to improve its flexibility and robustness to noisy problems. See `here <https://github.com/numericalalgorithmsgroup/dfols>`_ for details.
 
 If you have any questions or suggestsions about the code, or have used DFO-GN for an interesting application, we would very much like to hear from you: please contact `Lindon Roberts <lindon.roberts@maths.ox.ac.uk>`_ (`alternative email <lindon.roberts@gmail.com>`_).
 

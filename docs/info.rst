@@ -90,5 +90,5 @@ References
 ----------
 
 .. [CR2017]   
-   Cartis, C. and Roberts, L., A Derivative-Free Gauss-Newton Method, *in preparation* (2017).
+   Cartis, C. and Roberts, L., `A Derivative-Free Gauss-Newton Method <https://arxiv.org/abs/1710.11005>`_, submitted (2017).
 
