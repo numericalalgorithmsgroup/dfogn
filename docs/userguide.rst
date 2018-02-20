@@ -392,9 +392,9 @@ The output of this is
   
        *** DFO-GN results *** 
       Solution xmin = [ 0.09777309 -2.32510588]
-      Objective value f(xmin) = 2.048743163e-24
-      Needed 24 objective evaluations
-      Residual vector = [  1.23900890e-13   1.42597045e-12]
+      Objective value f(xmin) = 2.916172822e-16
+      Needed 13 objective evaluations
+      Residual vector = [ -1.38601752e-09  -1.70204653e-08]
       Exit flag = 0
       Success: Objective is sufficiently small
 
