@@ -24,4 +24,4 @@ Copyright 2017, Lindon Roberts
 
 """
 
-__version__ = '0.2'
+__version__ = '1.0'

@@ -10,3 +10,7 @@ Version 0.2 (20 Feb 2018)
 -------------------------
 * Minor bug fix to trust region subproblem solver (the output :code:`crvmin` is calculated correctly) - this has minimal impact on the performance of DFO-GN.
 
+Version 1.0 (17 Jul 2018)
+-------------------------
+* Bug fix for installation when dependencies not installed, added requirements.txt - no changes to the DFO-GN algorithm.
+

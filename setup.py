@@ -24,8 +24,12 @@ alternative licensing.
 
 from setuptools import setup
 
-# Get package version
-from dfogn import __version__
+# Get package version without "import dfogn" (which requires dependencies to already be installed)
+import os
+version = {}
+with open(os.path.join('dfogn', 'version.py')) as fp:
+    exec(fp.read(), version)
+__version__ = version['__version__']
 
 setup(
     name='DFOGN',
@@ -35,7 +39,7 @@ setup(
     author='Lindon Roberts',
     author_email='lindon.roberts@maths.ox.ac.uk',
     url="https://github.com/numericalalgorithmsgroup/dfogn/",
-    download_url="https://github.com/numericalalgorithmsgroup/dfogn/archive/0.2.tar.gz",
+    download_url="https://github.com/numericalalgorithmsgroup/dfogn/archive/1.0.tar.gz",
     packages=['dfogn'],
     license='GNU GPL',
     keywords = "mathematics derivative free optimization nonlinear least squares",
