@@ -10,7 +10,7 @@ Note: we have released a newer package, called DFO-LS, which is an upgrade of DF
 
 Documentation
 -------------
-See manual.pdf or `here <http://people.maths.ox.ac.uk/robertsl/dfogn/>`_.
+See manual.pdf or `here <https://numericalalgorithmsgroup.github.io/dfogn/>`_.
 
 Requirements
 ------------
@@ -79,7 +79,7 @@ If you installed DFO-GN manually, you can test your installation by running:
 
     $ python setup.py test
 
-Alternatively, the `documentation <http://people.maths.ox.ac.uk/robertsl/dfogn/>`_ provides some simple examples of how to run DFO-GN, which are also available in the examples directory.
+Alternatively, the `documentation <https://numericalalgorithmsgroup.github.io/dfogn/>`_ provides some simple examples of how to run DFO-GN, which are also available in the examples directory.
 
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/DFOGN.svg
                   :target: https://pypi.python.org/pypi/DFOGN
