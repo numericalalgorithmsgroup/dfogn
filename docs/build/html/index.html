@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DFO-GN: A Derivative-Free Gauss-Newton Solver &mdash; DFO-GN v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="DFO-GN v1.0 documentation" href="#"/>
+        <link rel="next" title="Overview" href="info.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> DFO-GN
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing DFO-GN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">Using DFO-GN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">DFO-GN</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>DFO-GN: A Derivative-Free Gauss-Newton Solver</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dfo-gn-a-derivative-free-gauss-newton-solver">
+<h1>DFO-GN: A Derivative-Free Gauss-Newton Solver<a class="headerlink" href="#dfo-gn-a-derivative-free-gauss-newton-solver" title="Permalink to this headline">¶</a></h1>
+<p><strong>Release:</strong> 1.0</p>
+<p><strong>Date:</strong> 10 August 2018</p>
+<p><strong>Author:</strong> <a class="reference external" href="mailto:lindon&#46;roberts&#37;&#52;&#48;maths&#46;ox&#46;ac&#46;uk">Lindon Roberts</a> (Mathematical Institute, University of Oxford)</p>
+<p>DFO-GN is a Python package for finding local solutions to <strong>nonlinear least-squares minimization problems (with optional bound constraints)</strong>, without requiring any derivatives of the objective. DFO-GN stands for Derivative-Free Optimization using Gauss-Newton, and is applicable to problems such as</p>
+<ul class="simple">
+<li>Parameter estimation/data fitting;</li>
+<li>Solving systems of nonlinear equations (including under- and over-determined systems); and</li>
+<li>Inverse problems, including data assimilation.</li>
+</ul>
+<p>DFO-GN is a <em>derivative-free</em> algorithm, meaning it does not require any information about the derivative of the objective, nor does it attempt to estimate such information (e.g. by using finite differencing). This means that it is <strong>particularly useful for solving noisy problems</strong>; i.e. where evaluating the objective function several times for the same input may give different results.</p>
+<p>Mathematically, DFO-GN solves</p>
+<div class="math">
+\[\begin{split}\min_{x\in\mathbb{R}^n}  &amp;\quad  f(x) := \sum_{i=1}^{m}r_{i}(x)^2 \\
+\text{s.t.} &amp;\quad  a \leq x \leq b\end{split}\]</div>
+<p>where the functions <span class="math">\(r_i(x)\)</span> may be nonlinear and even nonconvex. Full details of the DFO-GN algorithm are given in our paper: <a class="reference external" href="https://arxiv.org/abs/1710.11005">A Derivative-Free Gauss-Newton Method</a>, C. Cartis and L. Roberts, submitted (2017).</p>
+<p>DFO-GN is released under the open source GNU General Public License, a copy of which can be found in LICENSE.txt. Please <a class="reference external" href="http://www.nag.com/content/worldwide-contact-information">contact NAG</a> for alternative licensing. It is compatible with both Python 2 and Python 3.</p>
+<p>Note: we have released a newer package, called DFO-LS, which is an upgrade of DFO-GN to improve its flexibility and robustness to noisy problems. See <a class="reference external" href="https://github.com/numericalalgorithmsgroup/dfols">here</a> for details.</p>
+<p>If you have any questions or suggestsions about the code, or have used DFO-GN for an interesting application, we would very much like to hear from you: please contact <a class="reference external" href="mailto:lindon&#46;roberts&#37;&#52;&#48;maths&#46;ox&#46;ac&#46;uk">Lindon Roberts</a> (<a class="reference external" href="mailto:lindon&#46;roberts&#37;&#52;&#48;gmail&#46;com">alternative email</a>).</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="info.html#when-to-use-dfo-gn">When to use DFO-GN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#parameter-fitting">Parameter Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#solving-nonlinear-systems-of-equations">Solving Nonlinear Systems of Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#details-of-the-dfo-gn-algorithm">Details of the DFO-GN Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing DFO-GN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installation-using-pip">Installation using pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#manual-installation">Manual installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#uninstallation">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">Using DFO-GN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#how-to-use-dfo-gn">How to use DFO-GN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#outputs">Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#optional-arguments">Optional Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#a-simple-example">A Simple Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#adding-bounds-and-more-output">Adding Bounds and More Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#example-noisy-objective-evaluation">Example: Noisy Objective Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#example-parameter-estimation-data-fitting">Example: Parameter Estimation/Data Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="userguide.html#example-solving-a-nonlinear-system-of-equations">Example: Solving a Nonlinear System of Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="history.html#version-0-1-13-sep-2017">Version 0.1 (13 Sep 2017)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#version-0-2-20-feb-2018">Version 0.2 (20 Feb 2018)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#version-1-0-17-jul-2018">Version 1.0 (17 Jul 2018)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>This software was developed under the supervision of <a class="reference external" href="https://www.maths.ox.ac.uk/people/coralia.cartis">Coralia Cartis</a> (Mathematical Institute, University of Oxford), and was supported by the EPSRC Centre For Doctoral Training in <a class="reference external" href="https://www.maths.ox.ac.uk/study-here/postgraduate-study/industrially-focused-mathematical-modelling-epsrc-cdt">Industrially Focused Mathematical Modelling</a> (EP/L015803/1) at the University of Oxford’s Mathematical Institute, in collaboration with the <a class="reference external" href="http://www.nag.com/">Numerical Algorithms Group</a>.</p>
+<p>DFO-GN was developed using techniques from DFBOLS (<a class="reference external" href="https://doi.org/10.1137/09075531X">Zhang, Conn &amp; Scheinberg, 2010</a>) and BOBYQA (<a class="reference external" href="http://mat.uc.pt/~zhang/software.html">Powell, 2009</a>).
+The structure of this documentation is from <a class="reference external" href="http://pythonhosted.org/oBB/">oBB</a> by Jari Fowkes.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="info.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Lindon Roberts (Mathematical Institute, University of Oxford).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

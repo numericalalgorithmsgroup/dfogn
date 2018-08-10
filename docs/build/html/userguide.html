@@ -1,0 +1,628 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using DFO-GN &mdash; DFO-GN v1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="DFO-GN v1.0 documentation" href="index.html"/>
+        <link rel="next" title="Version History" href="history.html"/>
+        <link rel="prev" title="Installing DFO-GN" href="install.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DFO-GN
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="info.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing DFO-GN</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using DFO-GN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-dfo-gn">How to use DFO-GN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#outputs">Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-arguments">Optional Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-simple-example">A Simple Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-bounds-and-more-output">Adding Bounds and More Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-noisy-objective-evaluation">Example: Noisy Objective Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-parameter-estimation-data-fitting">Example: Parameter Estimation/Data Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-solving-a-nonlinear-system-of-equations">Example: Solving a Nonlinear System of Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Version History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DFO-GN</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Using DFO-GN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/userguide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-dfo-gn">
+<h1>Using DFO-GN<a class="headerlink" href="#using-dfo-gn" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the main interface to DFO-GN and how to use it.</p>
+<div class="section" id="how-to-use-dfo-gn">
+<h2>How to use DFO-GN<a class="headerlink" href="#how-to-use-dfo-gn" title="Permalink to this headline">¶</a></h2>
+<p>The main interface to DFO-GN is via the function <code class="code docutils literal"><span class="pre">solve</span></code></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">soln</span> <span class="o">=</span> <span class="n">dfogn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">objfun</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The input <code class="code docutils literal"><span class="pre">objfun</span></code> is a Python function which takes an input <span class="math">\(x\in\mathbb{R}^n\)</span> and returns the vector of residuals <span class="math">\([r_1(x)\: \cdots \: r_m(x)]\in\mathbb{R}^m\)</span>. Both the input and output of <code class="code docutils literal"><span class="pre">objfun</span></code> must be one-dimensional NumPy arrays (i.e. with <code class="code docutils literal"><span class="pre">x.shape</span> <span class="pre">==</span> <span class="pre">(n,)</span></code> and <code class="code docutils literal"><span class="pre">objfun(x).shape</span> <span class="pre">==</span> <span class="pre">(m,)</span></code>).</p>
+<p>The input <code class="code docutils literal"><span class="pre">x0</span></code> is the starting point for the solver, and (where possible) should be set to be the best available estimate of the true solution <span class="math">\(x_{min}\in\mathbb{R}^n\)</span>. It should be specified as a one-dimensional NumPy array (i.e. with <code class="code docutils literal"><span class="pre">x0.shape</span> <span class="pre">==</span> <span class="pre">(n,)</span></code>).
+As DFO-GN is a local solver, providing different values for <code class="code docutils literal"><span class="pre">x0</span></code> may cause it to return different solutions, with possibly different objective values.</p>
+</div>
+<div class="section" id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">¶</a></h2>
+<p>The output of <code class="code docutils literal"><span class="pre">dfogn.solve</span></code> is an object <code class="code docutils literal"><span class="pre">soln</span></code> containing:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">soln.x</span></code> - an estimate of the solution, <span class="math">\(x_{min}\in\mathbb{R}^n\)</span>, a one-dimensional NumPy array.</li>
+<li><code class="code docutils literal"><span class="pre">soln.resid</span></code> - the vector of residuals at the calculated solution <span class="math">\([r_1(x_{min})\: \cdots \: r_m(x_{min})]\in\mathbb{R}^m\)</span></li>
+<li><code class="code docutils literal"><span class="pre">soln.f</span></code> - the objective value at the calculated solution, <span class="math">\(f(x_{min})\)</span>, a Float.</li>
+<li><code class="code docutils literal"><span class="pre">soln.jacobian</span></code> - an estimate of the <span class="math">\(m\times n\)</span> Jacobian matrix of first derivatives at the calculated solution <span class="math">\(J_{i,j} \approx \partial r_i(x_{min})/\partial x_j\)</span>, a two-dimensional NumPy array.</li>
+<li><code class="code docutils literal"><span class="pre">soln.nf</span></code> - the number of evaluations of <code class="code docutils literal"><span class="pre">objfun</span></code> that the algorithm needed, an Integer.</li>
+<li><code class="code docutils literal"><span class="pre">soln.flag</span></code> - an exit flag, which can take one of several values (listed below), an Integer.</li>
+<li><code class="code docutils literal"><span class="pre">soln.msg</span></code> - a description of why the algorithm finished, a String.</li>
+</ul>
+<p>The possible values of <code class="code docutils literal"><span class="pre">flag</span></code> are defined by the following variables, also defined in the <code class="code docutils literal"><span class="pre">soln</span></code> object:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">soln.EXIT_SUCCESS</span> <span class="pre">=</span> <span class="pre">0</span></code> - DFO-GN terminated successfully (the objective value or trust region radius are sufficiently small).</li>
+<li><code class="code docutils literal"><span class="pre">soln.EXIT_INPUT_ERROR</span> <span class="pre">=</span> <span class="pre">1</span></code> - error in the inputs.</li>
+<li><code class="code docutils literal"><span class="pre">soln.EXIT_MAXFUN_WARNING</span> <span class="pre">=</span> <span class="pre">2</span></code> - maximum allowed objective evaluations reached.</li>
+<li><code class="code docutils literal"><span class="pre">soln.EXIT_TR_INCREASE_ERROR</span> <span class="pre">=</span> <span class="pre">3</span></code> - error occurred when solving the trust region subproblem.</li>
+<li><code class="code docutils literal"><span class="pre">soln.EXIT_LINALG_ERROR</span> <span class="pre">=</span> <span class="pre">4</span></code> - linear algebra error, e.g. the interpolation points produced a singular linear system.</li>
+<li><code class="code docutils literal"><span class="pre">soln.EXIT_ALTMOV_MEMORY_ERROR</span> <span class="pre">=</span> <span class="pre">5</span></code> - error occurred when determining a geometry-improving step.</li>
+</ul>
+<p>For more information about how to interpret these descriptions, see the algorithm details section in <a class="reference internal" href="info.html"><span class="doc">Overview</span></a>. If you encounter any of the last 4 conditions, first check to see if the output value is sufficient for your requirements, otherwise consider changing <code class="code docutils literal"><span class="pre">x0</span></code> or the optional parameter <code class="code docutils literal"><span class="pre">rhobeg</span></code> (see below).</p>
+<p>As variables are defined in the <code class="code docutils literal"><span class="pre">soln</span></code> objected, they can be accessed with, for example</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">soln</span><span class="o">.</span><span class="n">flag</span> <span class="o">==</span> <span class="n">soln</span><span class="o">.</span><span class="n">EXIT_SUCCESS</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="optional-arguments">
+<h2>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal"><span class="pre">solve</span></code> function has several optional arguments which the user may provide:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dfogn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">objfun</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">maxfun</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+            <span class="n">rhobeg</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">rhoend</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>These arguments are:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">lower</span></code> - the vector <span class="math">\(a\)</span> of lower bounds on <span class="math">\(x\)</span> (default is <span class="math">\(a_i=-10^{20}\)</span>).</li>
+<li><code class="code docutils literal"><span class="pre">upper</span></code> - the vector <span class="math">\(b\)</span> of upper bounds on <span class="math">\(x\)</span> (default is <span class="math">\(b_i=10^{20}\)</span>).</li>
+<li><code class="code docutils literal"><span class="pre">maxfun</span></code> - the maximum number of objective evaluations the algorithm may request (default is 1000).</li>
+<li><code class="code docutils literal"><span class="pre">rhobeg</span></code> - the initial value of the trust region radius (default is <span class="math">\(0.1\max(\|x_0\|_{\infty}, 1)\)</span>).</li>
+<li><code class="code docutils literal"><span class="pre">rhoend</span></code> - minimum allowed value of trust region radius, which determines when a successful termination occurs (default is <span class="math">\(10^{-8}\)</span>).</li>
+</ul>
+<p>There is a tradeoff when choosing the value of <code class="code docutils literal"><span class="pre">rhobeg</span></code>: a large value allows the algorithm to progress to a solution quicker, but there is a greater risk that it tries points which do not reduce the objective. Similarly, a small value means a greater chance of reducing the objective, but potentially making slower progress towards the final solution.</p>
+<p>The value of <code class="code docutils literal"><span class="pre">rhoend</span></code> determines the level of accuracy desired in the solution <code class="code docutils literal"><span class="pre">xmin</span></code> (smaller values give higher accuracy, but DFO-GN will take longer to finish).</p>
+<p>The requirements on the inputs are:</p>
+<ul class="simple">
+<li>Each entry of <code class="code docutils literal"><span class="pre">lower</span></code> must be strictly below the corresponding entry of <code class="code docutils literal"><span class="pre">upper</span></code>, with a gap of at least twice <code class="code docutils literal"><span class="pre">rhobeg</span></code>;</li>
+<li>Both <code class="code docutils literal"><span class="pre">rhobeg</span></code> and <code class="code docutils literal"><span class="pre">rhoend</span></code> must be strictly positive, with <code class="code docutils literal"><span class="pre">rhoend</span></code> being the smaller one; and</li>
+<li>The value <code class="code docutils literal"><span class="pre">maxfun</span></code> must be strictly positive, and generally should be above <code class="code docutils literal"><span class="pre">len(x)+1</span></code> (which is the initial setup requirement).</li>
+</ul>
+</div>
+<div class="section" id="a-simple-example">
+<h2>A Simple Example<a class="headerlink" href="#a-simple-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we wish to minimize the <a class="reference external" href="https://en.wikipedia.org/wiki/Rosenbrock_function">Rosenbrock function</a> (a common test problem):</p>
+<div class="math">
+\[\begin{split}\min_{(x_1,x_2)\in\mathbb{R}^2}  &amp;\quad  100(x_2-x_1^2)^2 + (1-x_1)^2 \\\end{split}\]</div>
+<p>This function has only one local minimum <span class="math">\(f(x_{min})=0\)</span> at <span class="math">\(x_{min}=(1,1)\)</span>. We can write this as a least-squares problem as:</p>
+<div class="math">
+\[\begin{split}\min_{(x_1,x_2)\in\mathbb{R}^2}  &amp;\quad  [10(x_2-x_1^2)]^2 + [1-x_1]^2 \\\end{split}\]</div>
+<p>A commonly-used starting point for testing purposes is <span class="math">\(x_0=(-1.2,1)\)</span>. The following script shows how to solve this problem using DFO-GN:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># DFO-GN example: minimize the Rosenbrock function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dfogn</span>
+
+<span class="c1"># Define the objective function</span>
+<span class="k">def</span> <span class="nf">rosenbrock</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># Define the starting point</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="c1"># Call DFO-GN</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">dfogn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">rosenbrock</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+
+<span class="c1"># Display output</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot; *** DFO-GN results *** &quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Solution xmin = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Objective value f(xmin) = </span><span class="si">%.10g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Needed </span><span class="si">%g</span><span class="s2"> objective evaluations&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">nf</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Residual vector = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">resid</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Approximate Jacobian = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">jacobian</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Exit flag = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">flag</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The output of this script is</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span> *** DFO-GN results ***
+Solution xmin = [ 1.  1.]
+Objective value f(xmin) = 1.268313548e-17
+Needed 50 objective evaluations
+Residual vector = [ -3.56133900e-09   0.00000000e+00]
+Approximate Jacobian = [[ -2.00012196e+01   1.00002643e+01]
+ [ -1.00000000e+00   3.21018592e-13]]
+Exit flag = 0
+Success: Objective is sufficiently small
+</pre></div>
+</div>
+</div></blockquote>
+<p>Note in particular that the Jacobian is not quite correct - the bottom-right entry should be exactly zero for all <span class="math">\(x\)</span>, for instance.</p>
+</div>
+<div class="section" id="adding-bounds-and-more-output">
+<h2>Adding Bounds and More Output<a class="headerlink" href="#adding-bounds-and-more-output" title="Permalink to this headline">¶</a></h2>
+<p>We can extend the above script to add constraints. To do this, we can add the lines</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Define bound constraints (a &lt;= x &lt;= b)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.0</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">])</span>
+
+<span class="c1"># Call DFO-GN (with bounds)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">dfogn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">rosenbrock</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>DFO-GN correctly finds the solution to the constrained problem:</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>Solution xmin = [ 0.9   0.81]
+Objective value f(xmin) = 0.01
+Needed 44 objective evaluations
+Residual vector = [ -2.01451078e-10   1.00000000e-01]
+Approximate Jacobian = [[ -1.79999994e+01   1.00000004e+01]
+ [ -9.99999973e-01   2.01450058e-08]]
+Exit flag = 0
+Success: rho has reached rhoend
+</pre></div>
+</div>
+</div></blockquote>
+<p>However, we also get a warning that our starting point was outside of the bounds:</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>RuntimeWarning: Some entries of x0 above upper bound, adjusting
+</pre></div>
+</div>
+</div></blockquote>
+<p>DFO-GN automatically fixes this, and moves <span class="math">\(x_0\)</span> to a point within the bounds, in this case <span class="math">\(x_0=(-1.2, 0.85)\)</span>.</p>
+<p>We can also get DFO-GN to print out more detailed information about its progress using the <a class="reference external" href="https://docs.python.org/3/library/logging.html">logging</a> module. To do this, we need to add the following lines:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># ... (call dfogn.solve)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>And we can now see each evaluation of <code class="code docutils literal"><span class="pre">objfun</span></code>:</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>Function eval 1 has f = 39.65 at x = [-1.2   0.85]
+Function eval 2 has f = 14.337296 at x = [-1.08  0.85]
+...
+Function eval 43 has f = 0.010000000899913 at x = [ 0.9         0.80999999]
+Function eval 44 has f = 0.01 at x = [ 0.9   0.81]
+</pre></div>
+</div>
+</div></blockquote>
+<p>If we wanted to save this output to a file, we could replace the above call to <code class="code docutils literal"><span class="pre">logging.basicConfig()</span></code> with</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;myfile.txt&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+                    <span class="n">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">filemode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="example-noisy-objective-evaluation">
+<h2>Example: Noisy Objective Evaluation<a class="headerlink" href="#example-noisy-objective-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>As described in <a class="reference internal" href="info.html"><span class="doc">Overview</span></a>, derivative-free algorithms such as DFO-GN are particularly useful when <code class="code docutils literal"><span class="pre">objfun</span></code> has noise. Let’s modify the previous example to include random noise in our objective evaluation, and compare it to a derivative-based solver:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># DFO-GN example: minimize the Rosenbrock function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dfogn</span>
+
+<span class="c1"># Define the objective function</span>
+<span class="k">def</span> <span class="nf">rosenbrock</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># Modified objective function: add 1% Gaussian noise</span>
+<span class="k">def</span> <span class="nf">rosenbrock_noisy</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">rosenbrock</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">1e-2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)))</span>
+
+<span class="c1"># Define the starting point</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="c1"># Set random seed (for reproducibility)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Demonstrate noise in function evaluation:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;objfun(x0) = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">rosenbrock_noisy</span><span class="p">(</span><span class="n">x0</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Call DFO-GN</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">dfogn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">rosenbrock_noisy</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+
+<span class="c1"># Display output</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot; *** DFO-GN results *** &quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Solution xmin = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Objective value f(xmin) = </span><span class="si">%.10g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Needed </span><span class="si">%g</span><span class="s2"> objective evaluations&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">nf</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Residual vector = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">resid</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Approximate Jacobian = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">jacobian</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Exit flag = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">flag</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="c1"># Compare with a derivative-based solver</span>
+<span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="kn">as</span> <span class="nn">opt</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">least_squares</span><span class="p">(</span><span class="n">rosenbrock_noisy</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot; *** SciPy results *** &quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Solution xmin = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Objective value f(xmin) = </span><span class="si">%.10g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">soln</span><span class="o">.</span><span class="n">cost</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Needed </span><span class="si">%g</span><span class="s2"> objective evaluations&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">nfev</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Exit flag = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The output of this is:</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>Demonstrate noise in function evaluation:
+objfun(x0) = [-4.4776183   2.20880346]
+objfun(x0) = [-4.44306447  2.24929965]
+objfun(x0) = [-4.48217255  2.17849989]
+objfun(x0) = [-4.44180389  2.19667014]
+objfun(x0) = [-4.39545837  2.20903317]
+
+ *** DFO-GN results ***
+Solution xmin = [ 1.  1.]
+Objective value f(xmin) = 4.658911493e-15
+Needed 56 objective evaluations
+Residual vector = [ -6.82177042e-08  -2.29266787e-09]
+Approximate Jacobian = [[ -2.01345344e+01   1.01261457e+01]
+ [ -1.00035048e+00  -5.99847638e-03]]
+Exit flag = 0
+Success: Objective is sufficiently small
+
+ *** SciPy results ***
+Solution xmin = [-1.20000033  1.00000016]
+Objective value f(xmin) = 23.66957245
+Needed 6 objective evaluations
+Exit flag = 3
+`xtol` termination condition is satisfied.
+</pre></div>
+</div>
+</div></blockquote>
+<p>DFO-GN is able to find the solution with only 6 more function evaluations than in the noise-free case. However SciPy’s derivative-based solver, which has no trouble solving the noise-free problem, is unable to make any progress.</p>
+</div>
+<div class="section" id="example-parameter-estimation-data-fitting">
+<h2>Example: Parameter Estimation/Data Fitting<a class="headerlink" href="#example-parameter-estimation-data-fitting" title="Permalink to this headline">¶</a></h2>
+<p>Next, we show a short example of using DFO-GN to solve a parameter estimation problem (taken from <a class="reference external" href="https://uk.mathworks.com/help/optim/ug/lsqcurvefit.html#examples">here</a>). Given some observations <span class="math">\((t_i,y_i)\)</span>, we wish to calibrate parameters <span class="math">\(x=(x_1,x_2)\)</span> in the exponential decay model</p>
+<div class="math">
+\[y(t) = x_1 \exp(x_2 t)\]</div>
+<p>The code for this is:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># DFO-GN example: data fitting problem</span>
+<span class="c1"># Originally from:</span>
+<span class="c1"># https://uk.mathworks.com/help/optim/ug/lsqcurvefit.html</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dfogn</span>
+
+<span class="c1"># Observations</span>
+<span class="n">tdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">13.8</span><span class="p">,</span> <span class="mf">19.8</span><span class="p">,</span> <span class="mf">24.1</span><span class="p">,</span> <span class="mf">28.2</span><span class="p">,</span> <span class="mf">35.2</span><span class="p">,</span>
+                  <span class="mf">60.3</span><span class="p">,</span> <span class="mf">74.6</span><span class="p">,</span> <span class="mf">81.3</span><span class="p">])</span>
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">455.2</span><span class="p">,</span> <span class="mf">428.6</span><span class="p">,</span> <span class="mf">124.1</span><span class="p">,</span> <span class="mf">67.3</span><span class="p">,</span> <span class="mf">43.2</span><span class="p">,</span> <span class="mf">28.1</span><span class="p">,</span> <span class="mf">13.1</span><span class="p">,</span>
+                  <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">])</span>
+
+<span class="c1"># Model is y(t) = x[0] * exp(x[1] * t)</span>
+<span class="k">def</span> <span class="nf">prediction_error</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ydata</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">tdata</span><span class="p">)</span>
+
+<span class="c1"># Define the starting point</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">])</span>
+
+<span class="c1"># We expect exponential decay: set upper bound x[1] &lt;= 0</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1e20</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+
+<span class="c1"># Call DFO-GN</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">dfogn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">prediction_error</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="n">upper</span><span class="p">)</span>
+
+<span class="c1"># Display output</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot; *** DFO-GN results *** &quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Solution xmin = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Objective value f(xmin) = </span><span class="si">%.10g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Needed </span><span class="si">%g</span><span class="s2"> objective evaluations&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">nf</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Exit flag = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">flag</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The output of this is (noting that DFO-GN moves <span class="math">\(x_0\)</span> to be far away enough from the upper bound)</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>RuntimeWarning: Some entries of x0 too close to upper bound, adjusting
+ *** DFO-GN results ***
+Solution xmin = [  4.98830861e+02  -1.01256863e-01]
+Objective value f(xmin) = 9.504886892
+Needed 107 objective evaluations
+Exit flag = 0
+Success: rho has reached rhoend
+</pre></div>
+</div>
+</div></blockquote>
+<p>This produces a good fit to the observations.</p>
+<a class="reference internal image-reference" href="_images/data_fitting.png"><img alt="Data Fitting Results" class="align-center" src="_images/data_fitting.png" style="width: 75%;" /></a>
+</div>
+<div class="section" id="example-solving-a-nonlinear-system-of-equations">
+<h2>Example: Solving a Nonlinear System of Equations<a class="headerlink" href="#example-solving-a-nonlinear-system-of-equations" title="Permalink to this headline">¶</a></h2>
+<p>Lastly, we give an example of using DFO-GN to solve a nonlinear system of equations (taken from <a class="reference external" href="http://support.sas.com/documentation/cdl/en/imlug/66112/HTML/default/viewer.htm#imlug_genstatexpls_sect004.htm">here</a>). We wish to solve the following set of equations</p>
+<div class="math">
+\[\begin{split}x_1 + x_2 - x_1 x_2 + 2 &amp;= 0, \\
+x_1 \exp(-x_2) - 1 &amp;= 0.\end{split}\]</div>
+<p>The code for this is:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># DFO-GN example: Solving a nonlinear system of equations</span>
+<span class="c1"># http://support.sas.com/documentation/cdl/en/imlug/66112/HTML/default/viewer.htm#imlug_genstatexpls_sect004.htm</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dfogn</span>
+
+<span class="c1"># Want to solve:</span>
+<span class="c1">#   x1 + x2 - x1*x2 + 2 = 0</span>
+<span class="c1">#   x1 * exp(-x2) - 1   = 0</span>
+<span class="k">def</span> <span class="nf">nonlinear_system</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="c1"># Warning: if there are multiple solutions, which one</span>
+<span class="c1">#          DFO-GN returns will likely depend on x0!</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">])</span>
+
+<span class="n">soln</span> <span class="o">=</span> <span class="n">dfogn</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">nonlinear_system</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+
+<span class="c1"># Display output</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot; *** DFO-GN results *** &quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Solution xmin = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Objective value f(xmin) = </span><span class="si">%.10g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Needed </span><span class="si">%g</span><span class="s2"> objective evaluations&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">nf</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Residual vector = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">resid</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Exit flag = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">soln</span><span class="o">.</span><span class="n">flag</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The output of this is</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span> *** DFO-GN results ***
+Solution xmin = [ 0.09777309 -2.32510588]
+Objective value f(xmin) = 2.916172822e-16
+Needed 13 objective evaluations
+Residual vector = [ -1.38601752e-09  -1.70204653e-08]
+Exit flag = 0
+Success: Objective is sufficiently small
+</pre></div>
+</div>
+</div></blockquote>
+<p>Here, we see that both entries of the residual vector are very small, so both equations have been solved to high accuracy.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="history.html" class="btn btn-neutral float-right" title="Version History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Installing DFO-GN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Lindon Roberts (Mathematical Institute, University of Oxford).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
