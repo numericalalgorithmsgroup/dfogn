@@ -4,7 +4,7 @@ DFO-GN: Derivative-Free Nonlinear Least-Squares Solver |PyPI Version|
 DFO-GN is a package for solving nonlinear least-squares minimisation, without requiring derivatives of the objective.
 
 This is an implementation of the algorithm from our paper:
-`A Derivative-Free Gauss-Newton Method <https://arxiv.org/abs/1710.11005>`_, C. Cartis and L. Roberts, submitted (2017).
+`A Derivative-Free Gauss-Newton Method <https://arxiv.org/abs/1710.11005>`_, C. Cartis and L. Roberts, submitted (2017). For reproducibility of all figures in this paper, please feel free to contact the authors.
 
 Note: we have released a newer package, called DFO-LS, which is an upgrade of DFO-GN to improve its flexibility and robustness to noisy problems. See `here <https://github.com/numericalalgorithmsgroup/dfols>`_ for details.
 
