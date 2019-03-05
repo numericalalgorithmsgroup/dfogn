@@ -723,8 +723,9 @@ def dfogn_main(objfun, x0, xl, xu, rhobeg, rhoend, maxfun):
 
             # Severe cancellation is likely to occur if XOPT is too far from XBASE. [Fortran label 90]
             if dsq <= rounding_error_const * sumsq(model.xopt()):
-                model.shift_base(model.xopt())  # includes a re-factorisation of the interpolation matrix
-                xnew = xnew - model.xopt()
+                base_shift = model.xopt()
+                xnew = xnew - base_shift  # before xopt is updated
+                model.shift_base(base_shift)  # includes a re-factorisation of the interpolation matrix
 
             # Set KNEW to the index of the next interpolation point to be deleted to make room for a trust
             # region step. Again RESCUE may be called if rounding errors have damaged

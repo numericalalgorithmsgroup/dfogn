@@ -14,3 +14,7 @@ Version 1.0 (17 Jul 2018)
 -------------------------
 * Bug fix for installation when dependencies not installed, added requirements.txt - no changes to the DFO-GN algorithm.
 
+Version 1.0.1 (5 Mar 2019)
+--------------------------
+* Bug fix when changing base point in model.
+

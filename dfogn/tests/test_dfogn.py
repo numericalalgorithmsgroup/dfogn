@@ -49,7 +49,7 @@ class TestRosenbrockGeneric(unittest.TestCase):
         soln = dfogn.solve(rosenbrock, x0)
         self.assertTrue(array_compare(soln.x, np.array([1.0, 1.0]), thresh=1e-4), "Wrong xmin")
         self.assertTrue(array_compare(soln.resid, rosenbrock(soln.x), thresh=1e-10), "Wrong resid")
-        self.assertTrue(array_compare(soln.jacobian, rosenbrock_jacobian(soln.x), thresh=1e-2), "Wrong Jacobian")
+        self.assertTrue(array_compare(soln.jacobian, rosenbrock_jacobian(soln.x), thresh=2e-2), "Wrong Jacobian")
         self.assertTrue(abs(soln.f) < 1e-10, "Wrong fmin")
 
 
