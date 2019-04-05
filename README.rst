@@ -2,6 +2,10 @@
 DFO-GN: Derivative-Free Nonlinear Least-Squares Solver
 ======================================================
 
+.. image::  https://travis-ci.org/numericalalgorithmsgroup/dfogn.svg?branch=master
+   :target: https://travis-ci.org/numericalalgorithmsgroup/dfogn
+   :alt: Build Status
+
 .. image::  https://img.shields.io/badge/License-GPL%20v3-blue.svg
    :target: https://www.gnu.org/licenses/gpl-3.0
    :alt: GNU GPL v3 License
