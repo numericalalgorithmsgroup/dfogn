@@ -18,3 +18,7 @@ Version 1.0.1 (5 Mar 2019)
 --------------------------
 * Bug fix when changing base point in model.
 
+Version 1.0.2 (5 Apr 2019)
+--------------------------
+* Link code to Zenodo, to create DOI - no changes to the DFO-GN algorithm.
+
