@@ -1,6 +1,19 @@
-===========================================================================
-DFO-GN: Derivative-Free Nonlinear Least-Squares Solver |PyPI Version| |DOI|
-===========================================================================
+======================================================
+DFO-GN: Derivative-Free Nonlinear Least-Squares Solver
+======================================================
+
+.. image::  https://img.shields.io/badge/License-GPL%20v3-blue.svg
+   :target: https://www.gnu.org/licenses/gpl-3.0
+   :alt: GNU GPL v3 License
+
+.. image:: https://img.shields.io/pypi/v/DFOGN.svg
+   :target: https://pypi.python.org/pypi/DFOGN
+   :alt: Latest PyPI version
+
+.. image:: https://zenodo.org/badge/103143579.svg
+   :target: https://zenodo.org/badge/latestdoi/103143579
+   :alt: DOI:10.5281/zenodo.2629876
+
 DFO-GN is a package for solving nonlinear least-squares minimisation, without requiring derivatives of the objective.
 
 This is an implementation of the algorithm from our paper:
@@ -81,8 +94,3 @@ If you installed DFO-GN manually, you can test your installation by running:
 
 Alternatively, the `documentation <https://numericalalgorithmsgroup.github.io/dfogn/>`_ provides some simple examples of how to run DFO-GN, which are also available in the examples directory.
 
-.. |PyPI Version| image:: https://img.shields.io/pypi/v/DFOGN.svg
-                  :target: https://pypi.python.org/pypi/DFOGN
-                  
-.. |DOI| image:: https://zenodo.org/badge/103143579.svg
-   :target: https://zenodo.org/badge/latestdoi/103143579
