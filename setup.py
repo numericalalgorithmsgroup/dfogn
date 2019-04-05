@@ -39,7 +39,7 @@ setup(
     author='Lindon Roberts',
     author_email='lindon.roberts@maths.ox.ac.uk',
     url="https://github.com/numericalalgorithmsgroup/dfogn/",
-    download_url="https://github.com/numericalalgorithmsgroup/dfogn/archive/1.0.2.tar.gz",
+    download_url="https://github.com/numericalalgorithmsgroup/dfogn/archive/v1.0.2.tar.gz",
     packages=['dfogn'],
     license='GNU GPL',
     keywords = "mathematics derivative free optimization nonlinear least squares",
