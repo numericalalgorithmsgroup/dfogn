@@ -14,9 +14,9 @@ DFO-GN: Derivative-Free Nonlinear Least-Squares Solver
    :target: https://pypi.python.org/pypi/DFOGN
    :alt: Latest PyPI version
 
-.. image:: https://zenodo.org/badge/103143579.svg
-   :target: https://zenodo.org/badge/latestdoi/103143579
-   :alt: DOI:10.5281/zenodo.2629876
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.2629875.svg
+   :target: https://doi.org/10.5281/zenodo.2629875
+   :alt: DOI:10.5281/zenodo.2629875
 
 DFO-GN is a package for solving nonlinear least-squares minimisation, without requiring derivatives of the objective.
 
