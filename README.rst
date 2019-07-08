@@ -25,7 +25,7 @@ This is an implementation of the algorithm from our paper:
 
 Note: we have released a newer package, called DFO-LS, which is an upgrade of DFO-GN to improve its flexibility and robustness to noisy problems. See `here <https://github.com/numericalalgorithmsgroup/dfols>`_ for details.
 
-**Citation** To cite DFO-GN, please cite our paper
+**Citation** To cite DFO-GN, please use
 ::
    @Article{DFOGN,
      Title    = {A derivative-free {G}auss-{N}ewton method},

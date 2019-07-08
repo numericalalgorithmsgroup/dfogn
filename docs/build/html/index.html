@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -45,7 +43,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -86,10 +83,7 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+                <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="info.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installing DFO-GN</a></li>
@@ -107,10 +101,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">DFO-GN</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">DFO-GN</a>
       </nav>
 
 
@@ -119,40 +111,23 @@
         <div class="rst-content">
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="#">Docs</a> &raquo;</li>
-        
-      <li>DFO-GN: A Derivative-Free Gauss-Newton Solver</li>
-    
-    
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>DFO-GN: A Derivative-Free Gauss-Newton Solver</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -161,23 +136,36 @@
   <div class="section" id="dfo-gn-a-derivative-free-gauss-newton-solver">
 <h1>DFO-GN: A Derivative-Free Gauss-Newton Solver<a class="headerlink" href="#dfo-gn-a-derivative-free-gauss-newton-solver" title="Permalink to this headline">¶</a></h1>
 <p><strong>Release:</strong> 1.0.2</p>
-<p><strong>Date:</strong> 05 April 2019</p>
+<p><strong>Date:</strong> 08 July 2019</p>
 <p><strong>Author:</strong> <a class="reference external" href="mailto:lindon&#46;roberts&#37;&#52;&#48;maths&#46;ox&#46;ac&#46;uk">Lindon Roberts</a> (Mathematical Institute, University of Oxford)</p>
 <p>DFO-GN is a Python package for finding local solutions to <strong>nonlinear least-squares minimization problems (with optional bound constraints)</strong>, without requiring any derivatives of the objective. DFO-GN stands for Derivative-Free Optimization using Gauss-Newton, and is applicable to problems such as</p>
 <ul class="simple">
-<li>Parameter estimation/data fitting;</li>
-<li>Solving systems of nonlinear equations (including under- and over-determined systems); and</li>
-<li>Inverse problems, including data assimilation.</li>
+<li><p>Parameter estimation/data fitting;</p></li>
+<li><p>Solving systems of nonlinear equations (including under- and over-determined systems); and</p></li>
+<li><p>Inverse problems, including data assimilation.</p></li>
 </ul>
 <p>DFO-GN is a <em>derivative-free</em> algorithm, meaning it does not require any information about the derivative of the objective, nor does it attempt to estimate such information (e.g. by using finite differencing). This means that it is <strong>particularly useful for solving noisy problems</strong>; i.e. where evaluating the objective function several times for the same input may give different results.</p>
 <p>Mathematically, DFO-GN solves</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\min_{x\in\mathbb{R}^n}  &amp;\quad  f(x) := \sum_{i=1}^{m}r_{i}(x)^2 \\
 \text{s.t.} &amp;\quad  a \leq x \leq b\end{split}\]</div>
-<p>where the functions <span class="math">\(r_i(x)\)</span> may be nonlinear and even nonconvex. Full details of the DFO-GN algorithm are given in our paper: <a class="reference external" href="https://arxiv.org/abs/1710.11005">A Derivative-Free Gauss-Newton Method</a>, C. Cartis and L. Roberts, submitted (2017).</p>
+<p>where the functions <span class="math notranslate nohighlight">\(r_i(x)\)</span> may be nonlinear and even nonconvex. Full details of the DFO-GN algorithm are given in our paper: <a class="reference external" href="https://doi.org/10.1007/s12532-019-00161-7">A Derivative-Free Gauss-Newton Method</a>, C. Cartis and L. Roberts, Mathematical Programming Computation (2019). A preprint of the paper is available <a class="reference external" href="https://arxiv.org/abs/1710.11005">here</a>.</p>
 <p>DFO-GN is released under the open source GNU General Public License, a copy of which can be found in LICENSE.txt. Please <a class="reference external" href="http://www.nag.com/content/worldwide-contact-information">contact NAG</a> for alternative licensing. It is compatible with both Python 2 and Python 3.</p>
 <p>Note: we have released a newer package, called DFO-LS, which is an upgrade of DFO-GN to improve its flexibility and robustness to noisy problems. See <a class="reference external" href="https://github.com/numericalalgorithmsgroup/dfols">here</a> for details.</p>
 <p>If you have any questions or suggestsions about the code, or have used DFO-GN for an interesting application, we would very much like to hear from you: please contact <a class="reference external" href="mailto:lindon&#46;roberts&#37;&#52;&#48;maths&#46;ox&#46;ac&#46;uk">Lindon Roberts</a> (<a class="reference external" href="mailto:lindon&#46;roberts&#37;&#52;&#48;gmail&#46;com">alternative email</a>).</p>
+<p><strong>Citation</strong> To cite DFO-GN, please use</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@Article{DFOGN,
+  Title    = {A derivative-free {G}auss-{N}ewton method},
+  Author   = {Cartis, Coralia and Roberts, Lindon},
+  Journal  = {Mathematical Programming Computation},
+  Year     = {2019},
+  Doi      = {10.1007/s12532-019-00161-7},
+  Url      = {https://doi.org/10.1007/s12532-019-00161-7}
+}
+</pre></div>
+</div>
+</div></blockquote>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -228,15 +216,12 @@ The structure of this documentation is from <a class="reference external" href="
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="info.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="info.html" class="btn btn-neutral float-right" title="Overview" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -271,14 +256,14 @@ The structure of this documentation is from <a class="reference external" href="
             VERSION:'1.0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
