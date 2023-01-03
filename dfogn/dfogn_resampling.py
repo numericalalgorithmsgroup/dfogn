@@ -125,7 +125,7 @@ class Model:
         self.EXACT_CONST_TERM = True  # use exact c=r(xopt) for interpolation (improve conditioning)
         # Affects mini-model interpolation / interpolation matrix, but also geometry updating
 
-        self.nsamples = np.zeros((npt,), dtype=np.int)  # how many samples we have averaged to get fval_v, where fval = sumsq(avg fval_v)
+        self.nsamples = np.zeros((npt,), dtype=int)  # how many samples we have averaged to get fval_v, where fval = sumsq(avg fval_v)
 
     def x_within_bounds(self, k=None, x=None):
         # Get x value for k-th point or x vector (in absolute terms, force within bounds)
