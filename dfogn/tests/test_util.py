@@ -53,11 +53,11 @@ class TestEval(unittest.TestCase):
 class TestModelValue(unittest.TestCase):
     def runTest(self):
         n = 5
-        A = np.arange(n ** 2, dtype=np.float).reshape((n, n))
+        A = np.arange(n ** 2, dtype=float).reshape((n, n))
         H = np.sin(A + A.T)  # force symmetric
         hess = to_upper_triangular_vector(H)
-        vec = np.exp(np.arange(n, dtype=np.float))
-        g = np.cos(3*np.arange(n, dtype=np.float) - 2.0)
+        vec = np.exp(np.arange(n, dtype=float))
+        g = np.cos(3*np.arange(n, dtype=float) - 2.0)
         mval = np.dot(g, vec) + 0.5 * np.dot(vec, np.dot(H, vec))
         self.assertAlmostEqual(mval, calculate_model_value(g, hess, vec), 'Wrong value')
 
@@ -66,7 +66,7 @@ class TestInitFromMatrix(unittest.TestCase):
     def runTest(self):
         n = 3
         nvals = n*(n+1)//2
-        A = np.arange(n**2, dtype=np.float).reshape((n,n))
+        A = np.arange(n**2, dtype=float).reshape((n,n))
         hess = to_upper_triangular_vector(A+A.T)  # force symmetric
         self.assertEqual(len(hess), nvals, 'Wrong length')
         self.assertTrue(np.all(hess == np.array([0.0, 4.0, 8.0, 8.0, 12.0, 16.0])),
@@ -76,7 +76,7 @@ class TestInitFromMatrix(unittest.TestCase):
 class TestToFull(unittest.TestCase):
     def runTest(self):
         n = 7
-        A = np.arange(n ** 2, dtype=np.float).reshape((n, n))
+        A = np.arange(n ** 2, dtype=float).reshape((n, n))
         H = A + A.T  # force symmetric
         hess = to_upper_triangular_vector(H)
         self.assertTrue(np.all(to_full_matrix(n, hess) == H), 'Wrong values')
@@ -85,7 +85,7 @@ class TestToFull(unittest.TestCase):
 class TestGetElementGood(unittest.TestCase):
     def runTest(self):
         n = 3
-        A = np.arange(n ** 2, dtype=np.float).reshape((n, n))
+        A = np.arange(n ** 2, dtype=float).reshape((n, n))
         H = A + A.T  # force symmetric
         hess = to_upper_triangular_vector(H)
         for i in range(n):
@@ -98,9 +98,9 @@ class TestGetElementGood(unittest.TestCase):
 class TestMultGood(unittest.TestCase):
     def runTest(self):
         n = 5
-        A = np.arange(n ** 2, dtype=np.float).reshape((n, n))
+        A = np.arange(n ** 2, dtype=float).reshape((n, n))
         H = np.sin(A + A.T)  # force symmetric
         hess = to_upper_triangular_vector(H)
-        vec = np.exp(np.arange(n, dtype=np.float))
+        vec = np.exp(np.arange(n, dtype=float))
         hs = np.dot(H, vec)
         self.assertTrue(array_compare(right_multiply_hessian(hess, vec), hs, thresh=1e-12), 'Wrong values')
