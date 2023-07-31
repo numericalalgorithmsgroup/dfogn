@@ -38,7 +38,7 @@ class TestSumsq(unittest.TestCase):
         n = 10
         x = np.sin(np.arange(n))
         normx = np.sum(x**2)
-        self.assertAlmostEqual(normx, sumsq(x), 'Wrong answer')
+        self.assertAlmostEqual(normx, sumsq(x), msg='Wrong answer')
 
 
 class TestEval(unittest.TestCase):
