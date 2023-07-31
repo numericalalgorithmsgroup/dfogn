@@ -105,7 +105,15 @@ If you installed DFO-GN manually, you can test your installation by running:
 
  .. code-block:: bash
 
+    $ pytest
+
+for Python 3.7+ (need `pytest <http://pytest.org>`_)
+
+ .. code-block:: bash
+
     $ python setup.py test
+
+for Python 2.7
 
 Alternatively, the `documentation <https://numericalalgorithmsgroup.github.io/dfogn/>`_ provides some simple examples of how to run DFO-GN, which are also available in the examples directory.
 
